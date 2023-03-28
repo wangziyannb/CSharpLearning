@@ -1,0 +1,113 @@
+//1. Two Sum
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+        //CART
+        //Clarify: int, int array input, sum, result equal to target, return int[], no same element
+        //Assumption: only one solution, return -1,-1 if we cant find
+        //Result
+        //corner case
+        if(nums==null||nums.Length==0){
+            return new int[2];
+        }
+        Dictionary<int, int> map=new Dictionary<int, int>();
+        for(int i=0;i<nums.Length;i++){
+            if(map.ContainsKey(target-nums[i])){
+                return new int[2]{i, map[target-nums[i]]};
+            }else{
+                if(!map.ContainsKey(nums[i])){
+                    map.Add(nums[i],i);
+                }
+            }
+        }
+        return new int[2]{-1, -1};
+        //TC:O(n)
+        //SC:O(n)
+    }
+}
+
+//9. Palindrome Number
+public class Solution {
+    public bool IsPalindrome(int x) {
+        //CART
+        //Clarify: int, return boolean
+        //Assumption: no assumption
+        //Result:
+        //corner case
+        if(x<0){
+            return false;
+        }
+        //solution 1: use / and % to get right half part and compare to the left half part
+        //solution 2: convert to string and use two pointer
+        string s=x+"";
+        int l=0;
+        int r=s.Length-1;
+        while(l<r){
+            if(s[l]!=s[r]){
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
+        //TC:O(n)
+        //SC:O(n)
+    }
+}
+
+
+//217. Contains Duplicate
+public class Solution {
+    public bool ContainsDuplicate(int[] nums) {
+        //CART
+        //Clarify: unsorted array, any >=2 or all distinct
+        //Assumption: no assumption
+        //corner case
+        if(nums==null||nums.Length==0){
+            return false;
+        }
+        Dictionary<int, int> map=new Dictionary<int, int>();
+        for(int i=0;i<nums.Length;i++){
+            if(map.ContainsKey(nums[i])){
+                map[nums[i]]++;
+            }else{
+                map.Add(nums[i], 1);
+            }
+        }
+        var values=map.Values;
+        foreach(int i in values){
+            if(i>=2){
+                return true;
+            }
+        }
+        return false;
+        //TC:O(n)
+        //SC:O(n)
+    }
+}
+
+//412. Fizz Buzz
+public class Solution {
+    public IList<string> FizzBuzz(int n) {
+        //CART
+        //Clarify: int input, list output
+        //Assumption: n is valid
+        List<string> res=new List<string>();
+        for(int i=1;i<=n;i++){
+            bool a=i%3==0;
+            bool b=i%5==0;
+            bool c=a&&b;
+            if(c){
+                res.Add("FizzBuzz");
+            }else if(a){
+                res.Add("Fizz");
+            }else if(b){
+                res.Add("Buzz");
+            }else{
+                res.Add(i+"");
+            }
+        }
+        return res;
+        //TC:O(n)
+        //SC:O(1)
+    }
+}
