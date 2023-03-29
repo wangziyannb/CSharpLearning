@@ -1,0 +1,97 @@
+Concept Questions:
+
+1. What type would you choose for the following “numbers”?
+A person’s telephone number
+A person’s height
+A person’s age
+A person’s gender (Male, Female, Prefer Not To Answer)
+A person’s salary
+A book’s ISBN
+A book’s price
+A book’s shipping weight
+A country’s population
+The number of stars in the universe
+The number of employees in each of the small or medium businesses in the
+United Kingdom (up to about 50,000 employees per business)
+
+
+A person’s telephone number: string, contains '+'
+A person’s height: float (like 66.9 inch)
+A person’s age: byte(0-255) or int
+A person’s gender (Male, Female, Prefer Not To Answer): string/enum
+A person’s salary: decimal
+A book’s ISBN: string
+A book’s price: float
+A book’s shipping weight: float
+A country’s population: uint
+The number of stars in the universe: ulong
+The number of employees in each of the small or medium businesses in the United Kingdom (up to about 50,000 employees per business): ushort (0-65535)
+
+
+
+
+2. What are the difference between value type and reference type variables?
+
+(1) Value type variables directly hold the actual value, while reference type variables hold the address/pointer/reference to the actual object.
+(2) Value type variables are stored in the stack, while reference type variables are sotred on the heap.
+(3) When pass as function arguments, value type variables are copied. But reference type will only pass the reference. 
+
+
+
+3. What happens when you divide an int variable by 0?
+
+The program will throw an exception: 
+system.DivideByZeroException
+
+4. What happens when you divide a double variable by 0?
+
+will be ∞
+And the type is System.Double
+
+5. What happens when you overflow an int variable, that is, set it to a value beyond its range?
+
+max+1 will become min
+min-1 will become max
+
+int x = int.MaxValue;
+for (int i = x; i <= x; i++) {
+    Console.WriteLine(i);
+    if (i == int.MinValue) break;
+}
+
+output:
+2147483647
+-2147483648
+
+6. What is the difference between x = y++; and x = ++y;?
+
+y++ will add 1 to y after this statement
+++y will add 1 to y before this statement
+
+7. What is the difference between break, continue, and return when used inside a loop statement?
+
+Break will stop the current level loop immediately.
+Continue will skip the remaining part of the current loop iteration and start the next loop cycle
+Return will end this entire function.
+
+8. What are the three parts of a for statement and which of them are required?
+for (int i = x; i <= x; i++) {
+    Console.WriteLine(i);
+    if (i == int.MinValue) break;
+}
+
+"int i=x;" is initialization
+"i <= x;" is loop condition
+"i++" is update operation
+
+No one is required (at least in C#).
+
+for (;;) {
+    
+}
+
+is an infinite loop like
+
+while(ture){
+	
+}
