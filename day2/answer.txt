@@ -1,0 +1,40 @@
+//15. Three Sum
+public class Solution {
+    public IList<IList<int>> ThreeSum(int[] nums) {
+        //CART
+        //Clarify: int array input, List<List<>> output,  return value not index, dedup required
+        //Assumption: nums.Length is valid
+        //Result:
+        //corner case
+        if(nums==null||nums.Length==0){
+            return new List<IList<int>>();
+        }
+        // strategy: 2 sum for negative counterpart
+        // sort for dedup
+        List<IList<int>> res=new List<IList<int>>();
+        Array.Sort(nums);
+        for(int i=0;i<nums.Length;i++){
+            int target=0-nums[i];
+            HashSet<int> localSet=new HashSet<int>();
+            for(int j=i+1; j<nums.Length;j++){
+                if(localSet.Contains(target-nums[j])){
+                    var r=new List<int>();
+                    r.Add(nums[i]);
+                    r.Add(nums[j]);
+                    r.Add(target-nums[j]);
+                    res.Add(r);
+                    while(j+1<nums.Length&&nums[j]==nums[j+1]){
+                        j++;
+                    }
+                }
+                localSet.Add(nums[j]);
+            }
+            while(i+1<nums.Length&&nums[i]==nums[i+1]){
+                    i++;
+            }
+        }
+        return res;
+        //TC:O(n*logn+n^2)
+        //SC:O(n)
+    }
+}

@@ -1,0 +1,115 @@
+1. What are the six combinations of access modifier keywords and what do they do? 
+public: can be accessed from anywhere within the same assembly or from other assemblies with the proper reference.
+protected: can be accessed from the same class and derivated class.
+protected internal: can be accessed from the same class, derivated class, and from the same assembly. 
+internal: can be accessed from anywhere within the same assembly.
+private: can be accessed only from the same class.
+private protected: can be accessed only from the same class, and the derivated class in the same assembly
+
+2. What is the difference between the static, const, and readonly keywords when applied to a type member?
+static type member: class-level, belong to the class. Can be accessed without any instance.
+const type member: final. Can't be changed after compiling. Implicitly static.
+readonly type member: Can't be changed after initialization. Not static.
+
+3. What does a constructor do?
+Constructor can help initialize an instance and variables inside of it from the given class.
+A default constructor, which is param-less and have empty body, is provided automatically, but will be removed if we explicitly defined a constructor.
+
+4. Why is the partial keyword useful?
+The defination of class can be splited into multiple source files via partial keyword.
+Eg:
+partial class ClassA{
+	public void func1(){}
+}
+partial class ClassA{
+	public void func2(){}
+}
+The compiler will combine these class fragiles into a whole complex class includes all field and variable. In this way, we can split complex class into many small class to reduce extra effort. Also, this allows multiple developers to build the same class.
+
+5. What is a tuple?
+A collection of objects that have different data type.
+So we can return a tuple containing many objects without conflict with the limitation that only one variable should be returned.
+
+
+6. What does the C# record keyword do?
+Quickly generate a class that have basic data behaviors like constructor, getter (no setter since this record will be a immutable value), copy operator overloading, ToString(), Equals() and GetHashCode().
+
+
+7. What does overloading and overriding mean?
+overloading: Provide a different function that have the same name but different formal parameter list.
+overriding: We have to provide our own implementation of methods that required by parent abstract class or implemented interface.
+
+
+8. What is the difference between a field and a property?
+Field is the variable.
+Property is the variable but encapsulated with getter and setter.
+
+
+9. How do you make a method parameter optional?
+Use =.
+public void func(int a, int b=0){}
+We can call this function like func(1)
+So b will be default value, that is, 0.
+
+
+10. What is an interface and how is it different from abstract class?
+Interface have a group of abstract body-less function that needed to be fulfilled by the class that implemented this interface, as well as property but no fields.
+An Abstract class is a class that can holds both fields, concrete methods and abstract methods.
+
+A class can extends from one abstract class, but can implement multiple interfaces.
+
+In an interface, all members are public.
+
+11. What accessibility level are members of an interface?
+public.
+
+12. True/False. Polymorphism allows derived classes to provide different implementations
+of the same method.
+True.
+
+13. True/False. The override keyword is used to indicate that a method in a derived class is
+providing its own implementation of a method.
+True
+
+14. True/False. The new keyword is used to indicate that a method in a derived class is
+providing its own implementation of a method.
+True. Method hiding
+Note: method hiding will not replace the rewrited method.
+So the derivate class will use original method instead of the method marked as new in parent class.
+
+15. True/False. Abstract methods can be used in a normal (non-abstract) class. 
+False. Will turn the class into abstract class.
+
+16. True/False. Normal (non-abstract) methods can be used in an abstract class. 
+True.
+
+17. True/False. Derived classes can override methods that were virtual in the base class.
+True.
+
+18. True/False. Derived classes can override methods that were abstract in the base class.
+True.
+
+19. True/False. In a derived class, you can override a method that was neither virtual non abstract in the base class.
+False. Need to use new instead.
+
+20. True/False. A class that implements an interface does not have to provide an
+implementation for all of the members of the interface.
+False. We need to implement everything even proporties.
+
+21. True/False. A class that implements an interface is allowed to have other members that
+aren’t defined in the interface.
+True
+
+22. True/False. A class can have more than one base class.
+False in C#
+
+23. True/False. A class can implement more than one interface.
+True.
+
+24. What is meant by the terms managed resource and unmanaged resource in .NET
+Managed resource: resources managed under .NET runtime, like memory
+Unmanaged resource: resources that are not managed by .NET runtime, like opertion system
+GC will only collect and release managed resource.
+
+25. What's the purpose of Garbage Collector in .NET?
+Manage memory resources used by objects in .NET runtime.
